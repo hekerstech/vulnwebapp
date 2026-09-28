@@ -43,11 +43,20 @@ def issue_token(username: str, role: str) -> str:
 
 
 def verify_token(token: str):
-    """Return the payload carried by a session token, or None if unusable."""
+    """Return the payload carried by a session token, or None if unusable.
+
+    The signature is recomputed over the payload and compared in constant time
+    before any field is read, and expired tokens are refused.
+    """
     if not token:
         return None
 
-    body, _, signature = token.partition(".")
+    body, separator, signature = token.partition(".")
+    if not separator or not signature:
+        return None
+
+    if not hmac.compare_digest(signature, _sign(body)):
+        return None
 
     try:
         payload = json.loads(_b64url_decode(body))
@@ -55,6 +64,10 @@ def verify_token(token: str):
         return None
 
     if not isinstance(payload, dict) or "sub" not in payload:
+        return None
+
+    expires_at = payload.get("exp")
+    if not isinstance(expires_at, (int, float)) or time.time() >= expires_at:
         return None
 
     return payload
