@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Access denied — Acme Internal{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Access denied</h1>
+  <p class="muted">{{ message }}</p>
+  <nav style="margin-top:12px"><a href="{{ url_for('dashboard') }}">Back to dashboard</a></nav>
+</div>
+{% endblock %}

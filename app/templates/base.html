@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Acme Internal{% endblock %}</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; font: 15px/1.5 system-ui, sans-serif; background: #f4f5f7; color: #1b1f23; }
+    @media (prefers-color-scheme: dark) { body { background: #16181d; color: #e8e9ec; } .card { background: #1f2229 !important; border-color: #2c3038 !important; } input { background: #16181d !important; color: #e8e9ec !important; border-color: #343a44 !important; } }
+    .wrap { max-width: 640px; margin: 0 auto; padding: 32px 16px; }
+    .card { background: #fff; border: 1px solid #e2e4e8; border-radius: 10px; padding: 24px; }
+    h1 { font-size: 20px; margin: 0 0 4px; }
+    .muted { color: #6b7280; font-size: 13px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin: 14px 0 4px; }
+    input { width: 100%; box-sizing: border-box; padding: 9px 10px; border: 1px solid #cfd3d9; border-radius: 6px; font: inherit; }
+    button { margin-top: 18px; width: 100%; padding: 10px; border: 0; border-radius: 6px; background: #2f6feb; color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+    .err { margin-top: 14px; padding: 9px 11px; border-radius: 6px; background: #fdecea; color: #a32218; font-size: 13px; }
+    nav a { color: #2f6feb; text-decoration: none; margin-right: 14px; font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+    th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #e2e4e8; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

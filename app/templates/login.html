@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Sign in — Acme Internal{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Sign in</h1>
+  <p class="muted">Acme Internal Portal</p>
+  <form method="post" action="{{ url_for('login') }}">
+    <label for="username">Username</label>
+    <input id="username" name="username" autocomplete="username" autofocus required>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" required>
+    <button type="submit">Sign in</button>
+  </form>
+  {% if error %}<div class="err">{{ error }}</div>{% endif %}
+  <p class="muted" style="margin-top:18px">Demo accounts: <code>alice / alice-password</code>, <code>admin / admin-password</code></p>
+</div>
+{% endblock %}

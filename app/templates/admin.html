@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Admin — Acme Internal{% endblock %}
+{% block content %}
+<div class="card">
+  <nav><a href="{{ url_for('dashboard') }}">Dashboard</a><a href="{{ url_for('admin') }}">Admin</a><a href="{{ url_for('logout') }}">Sign out</a></nav>
+  <h1>Administration</h1>
+  <p class="muted">Restricted area — only accounts with the <code>admin</code> role should reach this page.</p>
+  <table>
+    <tr><th>Setting</th><th>Value</th></tr>
+    <tr><td>Billing export</td><td>enabled</td></tr>
+    <tr><td>Audit log retention</td><td>90 days</td></tr>
+    <tr><td>API master key</td><td><code>sk_demo_0000000000000000</code></td></tr>
+  </table>
+  <p class="muted" style="margin-top:16px">Reached as <strong>{{ user.sub }}</strong>.</p>
+</div>
+{% endblock %}

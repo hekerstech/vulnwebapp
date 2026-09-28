@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    image: vulnwebapp:latest
+    ports:
+      - "5000:5000"
+    environment:
+      # Override in a local .env file (which is git-ignored).
+      APP_SECRET: ${APP_SECRET:-dev-only-insecure-secret}
+      PORT: "5000"
+    restart: unless-stopped
